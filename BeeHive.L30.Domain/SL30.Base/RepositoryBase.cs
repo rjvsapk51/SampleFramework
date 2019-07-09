@@ -28,7 +28,7 @@ namespace BeeHive.L30.Domain.SL30.Base
                 if (properties.Count != 0)
                 {
                     queryExpression += "select ";
-                    queryExpression += string.Join(",", new List<string>(properties.Keys));
+                    queryExpression += string.Join(",",properties.Select(x=>x.Key +' ' +x.Value.Item1));
                     queryExpression += " from ";
                     queryExpression += GetTableName();
                 }
@@ -64,7 +64,7 @@ namespace BeeHive.L30.Domain.SL30.Base
                 {
                     string primaryKey = properties.Where(x => x.Value.Item2 == true).Select(x => x.Key).FirstOrDefault();
                     queryExpression += "select ";
-                    queryExpression += string.Join(",", properties.Keys);
+                    queryExpression += string.Join(",", properties.Select(x => x.Key + " " + x.Value.Item1).ToList());
                     queryExpression += " from ";
                     queryExpression += GetTableName();
                     queryExpression += $" where {primaryKey} = {id}";
@@ -144,7 +144,7 @@ namespace BeeHive.L30.Domain.SL30.Base
                 {
                     queryExpression = $"select currval(pg_get_serial_sequence('{GetTableName()}','{primaryKey}'));";
                     int id = conn.Query<int>(queryExpression).FirstOrDefault();
-                    queryExpression = $"select {string.Join(",", new List<string>(properties.Keys))} from {GetTableName()} where {primaryKey} = {id}";
+                    queryExpression = $"select {string.Join(",", properties.Select(x => x.Key +" "+ x.Value.Item1).ToList())} from {GetTableName()} where {primaryKey} = {id}";
                     domain = conn.Query<T>(queryExpression).FirstOrDefault();
                 }
                 return domain;
@@ -257,7 +257,6 @@ namespace BeeHive.L30.Domain.SL30.Base
                 conn.Dispose();
             }
         }
-
         /// <summary>
         /// This method gets the table properties.
         /// return type Dictionary<string, Tuple<string, bool, TypeCode>> where

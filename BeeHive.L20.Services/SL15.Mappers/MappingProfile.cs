@@ -8,8 +8,8 @@ namespace BeeHive.L20.Services.SL15.Mappers
     {
         public MappingProfile()
         {
-            CreateMap<Employee, EmployeeModel>();
-            CreateMap<EmployeeModel, Employee>();
+            CreateMap<Employees, EmployeesModel>();
+            CreateMap<EmployeesModel, Employees>();
         }
     }
 }

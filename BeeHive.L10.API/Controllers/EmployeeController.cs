@@ -27,10 +27,10 @@ namespace BeeHive.L10.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Authorize(Roles = "Admin")]
-        public ActionResult<IEnumerable<EmployeeModel>> Get()
+        [Authorize(Roles = "User,Admin")]
+        public ActionResult<IEnumerable<EmployeesModel>> Get()
         {           
-            List<EmployeeModel> employee = _employee.GetEmployee();
+            List<EmployeesModel> employee = _employee.GetEmployee();
             return employee;
         }
         /// <summary>
@@ -40,11 +40,58 @@ namespace BeeHive.L10.API.Controllers
         /// <returns></returns>
         [HttpGet("{id}")]
         [Authorize(Roles = "User,Admin")]
-        public ActionResult<EmployeeModel> GetById(int id)
+        public ActionResult<EmployeesModel> GetById(int id)
         {
            
-            EmployeeModel employee = _employee.GetEmployee(id);
+            EmployeesModel employee = _employee.GetEmployee(id);
             return employee;
         }
+        /// <summary>
+        /// create
+        /// </summary>
+        /// <param name="model">dd</param>
+        /// <returns>ssss</returns>
+        [HttpPost]
+        public ActionResult<EmployeesModel> Create([FromBody]EmployeesModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                EmployeesModel employee = _employee.Create(model);
+                return employee;
+            }
+            else
+            {
+                return ValidationProblem();
+            }           
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut]
+        public ActionResult<EmployeesModel> Update([FromBody]EmployeesModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                EmployeesModel employee = _employee.Update(model);
+                return employee;
+            }
+            else
+            {
+                return ValidationProblem();
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            _employee.Delete(id);
+            return Ok("Employee deleted successfully.");
+        }
+
     }
 }

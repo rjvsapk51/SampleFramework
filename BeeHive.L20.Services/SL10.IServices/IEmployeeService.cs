@@ -4,7 +4,10 @@ namespace BeeHive.L20.Services.SL10.IServices
 {
     public interface IEmployeeService
     {
-        List<EmployeeModel> GetEmployee();
-        EmployeeModel GetEmployee(int id);
+        List<EmployeesModel> GetEmployee();
+        EmployeesModel GetEmployee(int id);
+        EmployeesModel Create(EmployeesModel model);
+        EmployeesModel Update(EmployeesModel model);
+        void Delete(int id);
     }
 }

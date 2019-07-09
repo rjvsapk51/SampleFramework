@@ -5,9 +5,10 @@ namespace BeeHive.L30.Domain.SL10.IRepository
 {
     public interface IEmployeeRepository
     {
-        List<Employee> All();
-        Employee GetById(int id);
-        Employee Create(Employee domain);
-        Employee Update(Employee domain);
+        List<Employees> All();
+        Employees GetById(int id);
+        Employees Create(Employees domain);
+        Employees Update(Employees domain);
+        void Delete(int id);
     }
 }

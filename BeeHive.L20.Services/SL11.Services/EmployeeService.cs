@@ -16,15 +16,29 @@ namespace BeeHive.L20.Services.SL11.Services
             _employeeRepository = employeeRepository;
             _mapper = mapper;
         }
-        public List<EmployeeModel> GetEmployee()
+        public List<EmployeesModel> GetEmployee()
         {
-            List<Employee> employee = _employeeRepository.All();                       
-            return _mapper.Map<List<EmployeeModel>>(employee);
+            List<Employees> employee = _employeeRepository.All();                       
+            return _mapper.Map<List<EmployeesModel>>(employee);
         }
-        public EmployeeModel GetEmployee(int id)
+        public EmployeesModel GetEmployee(int id)
         {
-            Employee employee = _employeeRepository.GetById(id);
-            return _mapper.Map<EmployeeModel>(employee);            
+            Employees employee = _employeeRepository.GetById(id);
+            return _mapper.Map<EmployeesModel>(employee);            
         }
+        public EmployeesModel Create(EmployeesModel model)
+        {
+            return _mapper.Map<EmployeesModel>(_employeeRepository.Create(_mapper.Map<Employees>(model)));
+        }
+
+        public EmployeesModel Update(EmployeesModel model)
+        {
+            return _mapper.Map<EmployeesModel>(_employeeRepository.Update(_mapper.Map<Employees>(model)));
+        }
+        public  void Delete(int id)
+        {
+            _employeeRepository.Delete(id);
+        }
+        
     }
 }
