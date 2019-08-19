@@ -6,7 +6,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>C:\Users\User\source\repos\BeeHive.L10.API\BeeHive.L10.API\BeeHive.L10.API.xml</DocumentationFile>
+    <DocumentationFile>..\BeeHive.L10.API\BeeHive.L10.API\BeeHive.L10.API.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
