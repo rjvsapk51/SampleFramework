@@ -19,12 +19,15 @@ namespace BeeHive.L10.API
         {
             Configuration = configuration;
         }
-
+       
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             //Swagger implementation
             SwaggerServiceExtension.AddSwaggerDocumentation(services);
@@ -38,6 +41,7 @@ namespace BeeHive.L10.API
             //Dependency Injection Implementation
             DependencyContainer.Initialize(services);
             //JWT configuration
+           
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -56,6 +60,11 @@ namespace BeeHive.L10.API
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MySuperSecuredKey"))
             };
             });
+            
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +78,7 @@ namespace BeeHive.L10.API
             {
                 app.UseHsts();
             }
+            app.UseCors(options => options.AllowAnyOrigin());
             app.UseSwagger();
             SwaggerServiceExtension.UseSwaggerDocumentation(app);
             app.UseAuthentication();

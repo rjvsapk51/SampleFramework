@@ -27,10 +27,9 @@ namespace BeeHive.L10.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Authorize(Roles = "User,Admin")]
         public ActionResult<IEnumerable<EmployeesModel>> Get()
         {           
-            List<EmployeesModel> employee = _employee.GetEmployee();
+            List<EmployeesModel> employee = _employee.GetAll();
             return employee;
         }
         /// <summary>
@@ -43,7 +42,7 @@ namespace BeeHive.L10.API.Controllers
         public ActionResult<EmployeesModel> GetById(int id)
         {
            
-            EmployeesModel employee = _employee.GetEmployee(id);
+            EmployeesModel employee = _employee.GetById(id);
             return employee;
         }
         /// <summary>

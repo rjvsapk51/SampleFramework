@@ -28,7 +28,7 @@ namespace BeeHive.L30.Domain.SL30.Base
                 if (properties.Count != 0)
                 {
                     queryExpression += "select ";
-                    queryExpression += string.Join(",",properties.Select(x=>x.Key +' ' +x.Value.Item1));
+                    queryExpression += string.Join(",",properties.Select(x => "\"" + x.Key + "\" \"" + x.Value.Item1 + "\""));
                     queryExpression += " from ";
                     queryExpression += GetTableName();
                 }
@@ -64,7 +64,7 @@ namespace BeeHive.L30.Domain.SL30.Base
                 {
                     string primaryKey = properties.Where(x => x.Value.Item2 == true).Select(x => x.Key).FirstOrDefault();
                     queryExpression += "select ";
-                    queryExpression += string.Join(",", properties.Select(x => x.Key + " " + x.Value.Item1).ToList());
+                    queryExpression += string.Join(",", properties.Select(x => "\"" + x.Key + "\" \"" + x.Value.Item1 + "\"").ToList());
                     queryExpression += " from ";
                     queryExpression += GetTableName();
                     queryExpression += $" where {primaryKey} = {id}";
@@ -132,6 +132,9 @@ namespace BeeHive.L30.Domain.SL30.Base
                                 case TypeCode.DateTime:
                                     cmd.Parameters.AddWithValue($"@{item}", Convert.ToDateTime(value.Item1));
                                     break;
+                                case TypeCode.Boolean:
+                                    cmd.Parameters.AddWithValue($"@{item}", Convert.ToBoolean(value.Item1));
+                                    break;
                                 default:
                                     cmd.Parameters.AddWithValue($"@{item}", Convert.ToString(value.Item1));
                                     break;
@@ -144,7 +147,7 @@ namespace BeeHive.L30.Domain.SL30.Base
                 {
                     queryExpression = $"select currval(pg_get_serial_sequence('{GetTableName()}','{primaryKey}'));";
                     int id = conn.Query<int>(queryExpression).FirstOrDefault();
-                    queryExpression = $"select {string.Join(",", properties.Select(x => x.Key +" "+ x.Value.Item1).ToList())} from {GetTableName()} where {primaryKey} = {id}";
+                    queryExpression = $"select {string.Join(",", properties.Select(x => "\""+x.Key +"\" \""+ x.Value.Item1+"\"").ToList())} from {GetTableName()} where {primaryKey} = {id}";
                     domain = conn.Query<T>(queryExpression).FirstOrDefault();
                 }
                 return domain;

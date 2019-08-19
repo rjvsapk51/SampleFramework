@@ -10,6 +10,8 @@ namespace BeeHive.L20.Services.SL15.Mappers
         {
             CreateMap<Employees, EmployeesModel>();
             CreateMap<EmployeesModel, Employees>();
+            CreateMap<BeeHiveMenu, BeeHiveMenuModel>();
+            CreateMap<BeeHiveMenuModel, BeeHiveMenu>();
         }
     }
 }

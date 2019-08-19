@@ -16,12 +16,12 @@ namespace BeeHive.L20.Services.SL11.Services
             _employeeRepository = employeeRepository;
             _mapper = mapper;
         }
-        public List<EmployeesModel> GetEmployee()
+        public List<EmployeesModel> GetAll()
         {
             List<Employees> employee = _employeeRepository.All();                       
             return _mapper.Map<List<EmployeesModel>>(employee);
         }
-        public EmployeesModel GetEmployee(int id)
+        public EmployeesModel GetById(int id)
         {
             Employees employee = _employeeRepository.GetById(id);
             return _mapper.Map<EmployeesModel>(employee);            
