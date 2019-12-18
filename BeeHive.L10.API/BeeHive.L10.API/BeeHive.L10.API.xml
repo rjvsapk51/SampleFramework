@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BeeHive.L10.API</name>
+    </assembly>
+    <members>
+        <member name="T:BeeHive.L10.API.Controllers.EmployeeController">
+            <summary>
+            Employee controller
+            </summary>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.#ctor(BeeHive.L20.Services.SL10.IServices.IEmployeeService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="employee"></param>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.Get">
+            <summary>
+            This is test
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.GetById(System.Int32)">
+            <summary>
+            This is second test
+            </summary>
+            <param name="id"> this is test variables.</param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.Create(BeeHive.L20.Services.SL20.Model.EmployeesModel)">
+            <summary>
+            create
+            </summary>
+            <param name="model">dd</param>
+            <returns>ssss</returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.Update(BeeHive.L20.Services.SL20.Model.EmployeesModel)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.Delete(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BeeHive.L10.API.Controllers.MenuController">
+            <summary>
+            Employee controller
+            </summary>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.MenuController.#ctor(BeeHive.L20.Services.SL10.IServices.IBeeHiveMenuService)">
+            <summary>
+            
+            </summary>
+            <param name="menu"></param>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.MenuController.Get">
+            <summary>
+            Get all menu
+            </summary>
+            <returns>Menu list</returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.MenuController.Create(BeeHive.L20.Services.SL20.Model.BeeHiveMenuModel)">
+            <summary>
+            Create functions
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

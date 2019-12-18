@@ -15,12 +15,8 @@ namespace BeeHive.L30.Domain.SL20.Entities
         public string DisplayBanner { get; set; }
         [Column("icon")]
         public string Icon { get; set; }
-        [Column("controller")]
-        public string Controller { get; set; }
-        [Column("action")]
-        public string Action { get; set; }
-        [Column("additional_parameter")]
-        public string AdditionalParameter { get; set; }
+        [Column("routerlink")]
+        public string RouterLink { get; set; }
         [Column("order_number")]
         public int OrderNumber { get; set; }
         [Column("access_to_all")]

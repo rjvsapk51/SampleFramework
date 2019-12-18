@@ -26,7 +26,17 @@ namespace BeeHive.L10.API.Controllers
             _menu = menu;
         }
         /// <summary>
-        /// 
+        /// Get all menu
+        /// </summary>
+        /// <returns>Menu list</returns>
+        [HttpGet]
+        public ActionResult<IEnumerable<BeeHiveMenuModel>> Get()
+        {
+            List<BeeHiveMenuModel> record = _menu.GetAll();
+            return record;
+        }
+        /// <summary>
+        /// Create functions
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
