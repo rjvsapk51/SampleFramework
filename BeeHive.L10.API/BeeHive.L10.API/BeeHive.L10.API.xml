@@ -72,5 +72,50 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="T:BeeHive.L10.API.Controllers.RoleController">
+            <summary>
+            CRUD Roles
+            </summary>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.RoleController.#ctor(BeeHive.L20.Services.SL10.IServices.IRoleServices)">
+            <summary>
+            
+            </summary>
+            <param name="role"></param>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.RoleController.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.RoleController.GetById(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.RoleController.Create(BeeHive.L20.Services.SL20.Model.RoleModel)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.RoleController.Update(BeeHive.L20.Services.SL20.Model.RoleModel)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.RoleController.Delete(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
