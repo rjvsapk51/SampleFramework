@@ -16,8 +16,8 @@ namespace BeeHive.L10.API.Loaders
         {
             services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
             services.AddSingleton<IEmployeeService, EmployeeService>();
-            services.AddSingleton<IBeeHiveMenuRepository, BeeHiveMenuRepository>();
-            services.AddSingleton<IBeeHiveMenuService, BeeHiveMenuService>();
+            services.AddSingleton<IMenuRepository, MenuRepository>();
+            services.AddSingleton<IMenuService, MenuService>();
         }
     }
 }

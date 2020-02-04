@@ -16,12 +16,12 @@ namespace BeeHive.L10.API.Controllers
     [ApiController]
     public class MenuController : ControllerBase
     {
-        IBeeHiveMenuService _menu;
+        IMenuService _menu;
         /// <summary>
         /// 
         /// </summary>
         /// <param name="menu"></param>
-        public MenuController(IBeeHiveMenuService menu)
+        public MenuController(IMenuService menu)
         {
             _menu = menu;
         }
@@ -30,9 +30,9 @@ namespace BeeHive.L10.API.Controllers
         /// </summary>
         /// <returns>Menu list</returns>
         [HttpGet]
-        public ActionResult<IEnumerable<BeeHiveMenuModel>> Get()
+        public ActionResult<IEnumerable<MenuModel>> Get()
         {
-            List<BeeHiveMenuModel> record = _menu.GetAll();
+            List<MenuModel> record = _menu.GetAll();
             return record;
         }
         /// <summary>
@@ -41,9 +41,9 @@ namespace BeeHive.L10.API.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<BeeHiveMenuModel> Create([FromBody]BeeHiveMenuModel model)
+        public ActionResult<MenuModel> Create([FromBody]MenuModel model)
         {
-            BeeHiveMenuModel menu = _menu.Create(model);
+            MenuModel menu = _menu.Create(model);
             return menu;
         }
 

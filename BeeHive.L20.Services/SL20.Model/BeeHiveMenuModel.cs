@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BeeHive.L20.Services.SL20.Model
 {
-    public class BeeHiveMenuModel
+    public class MenuModel
     {
         public long Id { get; set; }
         public string Banner { get; set; }

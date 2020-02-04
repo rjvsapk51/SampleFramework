@@ -53,7 +53,7 @@
             Employee controller
             </summary>
         </member>
-        <member name="M:BeeHive.L10.API.Controllers.MenuController.#ctor(BeeHive.L20.Services.SL10.IServices.IBeeHiveMenuService)">
+        <member name="M:BeeHive.L10.API.Controllers.MenuController.#ctor(BeeHive.L20.Services.SL10.IServices.IMenuService)">
             <summary>
             
             </summary>
@@ -65,7 +65,7 @@
             </summary>
             <returns>Menu list</returns>
         </member>
-        <member name="M:BeeHive.L10.API.Controllers.MenuController.Create(BeeHive.L20.Services.SL20.Model.BeeHiveMenuModel)">
+        <member name="M:BeeHive.L10.API.Controllers.MenuController.Create(BeeHive.L20.Services.SL20.Model.MenuModel)">
             <summary>
             Create functions
             </summary>
