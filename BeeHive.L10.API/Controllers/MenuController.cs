@@ -18,7 +18,7 @@ namespace BeeHive.L10.API.Controllers
     {
         IMenuService _menu;
         /// <summary>
-        /// 
+        /// Menu CRUD
         /// </summary>
         /// <param name="menu"></param>
         public MenuController(IMenuService menu)
@@ -33,18 +33,26 @@ namespace BeeHive.L10.API.Controllers
         public ActionResult<IEnumerable<MenuModel>> Get()
         {
             List<MenuModel> record = _menu.GetAll();
-            return record;
+            return Ok(record);
         }
         /// <summary>
-        /// Create functions
+        /// Create Menu
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
         public ActionResult<MenuModel> Create([FromBody]MenuModel model)
         {
-            MenuModel menu = _menu.Create(model);
-            return menu;
+            
+            if (ModelState.IsValid)
+            {
+                MenuModel menu = _menu.Create(model);
+                return menu;
+            }
+            else
+                return ValidationProblem();
+
+          
         }
 
     }

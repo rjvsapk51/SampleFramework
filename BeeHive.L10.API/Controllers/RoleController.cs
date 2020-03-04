@@ -26,29 +26,28 @@ namespace BeeHive.L10.API.Controllers
             _role = role;
         }
         /// <summary>
-        /// 
+        /// Get all roles from DB
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         public ActionResult<IEnumerable<RoleModel>> Get()
         {
             List<RoleModel> record = _role.GetAll();
-            return record;
+            return Ok(record);
         }
         /// <summary>
-        /// 
+        /// Get a role by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
         public ActionResult<RoleModel> GetById(int id)
         {
-
             RoleModel record = _role.GetById(id);
-            return record;
+            return Ok(record);
         }
         /// <summary>
-        /// 
+        /// Create a new role
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -58,7 +57,7 @@ namespace BeeHive.L10.API.Controllers
             if (ModelState.IsValid)
             {
                 RoleModel record = _role.Create(model);
-                return record;
+                return Created("Test uri",record);
             }
             else
             {
@@ -76,7 +75,7 @@ namespace BeeHive.L10.API.Controllers
             if (ModelState.IsValid)
             {
                 RoleModel record = _role.Update(model);
-                return record;
+                return  Ok(record);
             }
             else
             {

@@ -55,7 +55,7 @@
         </member>
         <member name="M:BeeHive.L10.API.Controllers.MenuController.#ctor(BeeHive.L20.Services.SL10.IServices.IMenuService)">
             <summary>
-            
+            Menu CRUD
             </summary>
             <param name="menu"></param>
         </member>
@@ -67,7 +67,7 @@
         </member>
         <member name="M:BeeHive.L10.API.Controllers.MenuController.Create(BeeHive.L20.Services.SL20.Model.MenuModel)">
             <summary>
-            Create functions
+            Create Menu
             </summary>
             <param name="model"></param>
             <returns></returns>
@@ -85,20 +85,20 @@
         </member>
         <member name="M:BeeHive.L10.API.Controllers.RoleController.Get">
             <summary>
-            
+            Get all roles from DB
             </summary>
             <returns></returns>
         </member>
         <member name="M:BeeHive.L10.API.Controllers.RoleController.GetById(System.Int32)">
             <summary>
-            
+            Get a role by id
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
         <member name="M:BeeHive.L10.API.Controllers.RoleController.Create(BeeHive.L20.Services.SL20.Model.RoleModel)">
             <summary>
-            
+            Create a new role
             </summary>
             <param name="model"></param>
             <returns></returns>

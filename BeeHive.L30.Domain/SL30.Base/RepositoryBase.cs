@@ -216,6 +216,9 @@ namespace BeeHive.L30.Domain.SL30.Base
                                 case TypeCode.DateTime:
                                     cmd.Parameters.AddWithValue($"@{item}", Convert.ToDateTime(value.Item1));
                                     break;
+                                case TypeCode.Boolean:
+                                    cmd.Parameters.AddWithValue($"@{item}",Convert.ToBoolean(value.Item1));
+                                    break;
                                 default:
                                     cmd.Parameters.AddWithValue($"@{item}", Convert.ToString(value.Item1));
                                     break;
