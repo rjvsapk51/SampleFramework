@@ -72,6 +72,20 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:BeeHive.L10.API.Controllers.MenuController.Update(BeeHive.L20.Services.SL20.Model.MenuModel)">
+            <summary>
+            Update a menu
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.MenuController.Delete(System.Int32)">
+            <summary>
+            Delete a role menu
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:BeeHive.L10.API.Controllers.RoleController">
             <summary>
             CRUD Roles
@@ -113,6 +127,51 @@
         <member name="M:BeeHive.L10.API.Controllers.RoleController.Delete(System.Int32)">
             <summary>
             
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BeeHive.L10.API.Controllers.RoleMenuController">
+            <summary>
+            RoleMenu actions
+            </summary>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.RoleMenuController.#ctor(BeeHive.L20.Services.SL10.IServices.IRoleMenuServices)">
+            <summary>
+            Role Menu Constructor
+            </summary>
+            <param name="roleMenu"></param>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.RoleMenuController.Get">
+            <summary>
+            Get all role menus
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.RoleMenuController.GetById(System.Int32)">
+            <summary>
+            Get a role menu by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.RoleMenuController.Create(BeeHive.L20.Services.SL20.Model.RoleMenuModel)">
+            <summary>
+            Create a new role menu
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.RoleMenuController.Update(BeeHive.L20.Services.SL20.Model.RoleMenuModel)">
+            <summary>
+            Update a role menu
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.RoleMenuController.Delete(System.Int32)">
+            <summary>
+            Delete a role menu
             </summary>
             <param name="id"></param>
             <returns></returns>

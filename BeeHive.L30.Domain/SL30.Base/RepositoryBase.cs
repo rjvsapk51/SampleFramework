@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -253,9 +254,13 @@ namespace BeeHive.L30.Domain.SL30.Base
                 conn.Open();
                 conn.Query(queryExpression);
             }
+            catch(NpgsqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception(ex.Message);
             }
             finally
             {

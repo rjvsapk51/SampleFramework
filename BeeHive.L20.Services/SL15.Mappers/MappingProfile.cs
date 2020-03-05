@@ -15,6 +15,7 @@ namespace BeeHive.L20.Services.SL15.Mappers
             CreateMap<MenuModel, Menu>();
             CreateMap<RoleModel, Role>();
             CreateMap<Role, RoleModel > ();
+            CreateMap<RoleMenu, RoleMenuModel>();
         }
     }
 }

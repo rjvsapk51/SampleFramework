@@ -1,63 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BeeHive.L20.Services.SL10.IServices;
+﻿using BeeHive.L20.Services.SL10.IServices;
 using BeeHive.L20.Services.SL20.Model;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace BeeHive.L10.API.Controllers
 {
     /// <summary>
-    /// CRUD Roles
+    /// RoleMenu actions
     /// </summary>
     [Route("[controller]")]
     [ApiController]
-    public class RoleController : ControllerBase
+    public class RoleMenuController : ControllerBase
     {
-        private readonly IRoleServices _role;
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <param name="role"></param>
-        public RoleController(IRoleServices role)
+        private readonly IRoleMenuServices _roleMenu;
+        /// <summary>
+        /// Role Menu Constructor
+        /// </summary>
+        /// <param name="roleMenu"></param>
+        public RoleMenuController(IRoleMenuServices roleMenu)
         {
-            _role = role;
+            _roleMenu = roleMenu;
         }
         /// <summary>
-        /// Get all roles from DB
+        /// Get all role menus
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult<IEnumerable<RoleModel>> Get()
+        public ActionResult<IEnumerable<RoleMenuModel>> Get()
         {
-            List<RoleModel> record = _role.GetAll();
+            List<RoleMenuModel> record = _roleMenu.GetAll();
             return Ok(record);
         }
         /// <summary>
-        /// Get a role by id
+        /// Get a role menu by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public ActionResult<RoleModel> GetById(int id)
+        public ActionResult<RoleMenuModel> GetById(int id)
         {
-            RoleModel record = _role.GetById(id);
+            RoleMenuModel record = _roleMenu.GetById(id);
             return Ok(record);
         }
         /// <summary>
-        /// Create a new role
+        /// Create a new role menu
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<RoleModel> Create([FromBody]RoleModel model)
+        public ActionResult<RoleMenuModel> Create([FromBody]RoleMenuModel model)
         {
             if (ModelState.IsValid)
             {
-                RoleModel record = _role.Create(model);
-                return Created("Test uri",record);
+                RoleMenuModel record = _roleMenu.Create(model);
+                return Created("Test uri", record);
             }
             else
             {
@@ -65,17 +61,17 @@ namespace BeeHive.L10.API.Controllers
             }
         }
         /// <summary>
-        /// 
+        /// Update a role menu
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut]
-        public ActionResult<RoleModel> Update([FromBody]RoleModel model)
+        public ActionResult<RoleMenuModel> Update([FromBody]RoleMenuModel model)
         {
             if (ModelState.IsValid)
             {
-                RoleModel record = _role.Update(model);
-                return  Ok(record);
+                RoleMenuModel record = _roleMenu.Update(model);
+                return Ok(record);
             }
             else
             {
@@ -83,24 +79,15 @@ namespace BeeHive.L10.API.Controllers
             }
         }
         /// <summary>
-        /// 
+        /// Delete a role menu
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            try
-            {
-                _role.Delete(id);
-                return Ok("Role deleted successfully.");
-            }catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-           
+            _roleMenu.Delete(id);
+            return Ok("Role deleted successfully.");
         }
-
-
     }
 }

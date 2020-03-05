@@ -43,7 +43,6 @@ namespace BeeHive.L10.API.Controllers
         [HttpPost]
         public ActionResult<MenuModel> Create([FromBody]MenuModel model)
         {
-            
             if (ModelState.IsValid)
             {
                 MenuModel menu = _menu.Create(model);
@@ -51,9 +50,35 @@ namespace BeeHive.L10.API.Controllers
             }
             else
                 return ValidationProblem();
-
-          
         }
-
+        /// <summary>
+        /// Update a menu
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public ActionResult<MenuModel> Update([FromBody]MenuModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                MenuModel record = _menu.Update(model);
+                return Ok(record);
+            }
+            else
+            {
+                return ValidationProblem();
+            }
+        }
+        /// <summary>
+        /// Delete a role menu
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            _menu.Delete(id);
+            return Ok("Role deleted successfully.");
+        }
     }
 }
