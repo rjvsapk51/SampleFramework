@@ -65,6 +65,13 @@
             </summary>
             <returns>Menu list</returns>
         </member>
+        <member name="M:BeeHive.L10.API.Controllers.MenuController.GetById(System.Int32)">
+            <summary>
+            Get a menu by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:BeeHive.L10.API.Controllers.MenuController.Create(BeeHive.L20.Services.SL20.Model.MenuModel)">
             <summary>
             Create Menu
@@ -119,14 +126,14 @@
         </member>
         <member name="M:BeeHive.L10.API.Controllers.RoleController.Update(BeeHive.L20.Services.SL20.Model.RoleModel)">
             <summary>
-            
+            Update a role
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:BeeHive.L10.API.Controllers.RoleController.Delete(System.Int32)">
             <summary>
-            
+            Delete a role
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -157,7 +164,7 @@
         </member>
         <member name="M:BeeHive.L10.API.Controllers.RoleMenuController.Create(BeeHive.L20.Services.SL20.Model.RoleMenuModel)">
             <summary>
-            Create a new role menu
+            Create a role menu
             </summary>
             <param name="model"></param>
             <returns></returns>

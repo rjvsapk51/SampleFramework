@@ -1,13 +1,13 @@
-﻿using Dapper;
+﻿using BeeHive.L90.Generics.SL10;
+using Dapper;
 using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+
 
 namespace BeeHive.L30.Domain.SL30.Base
 {
@@ -39,9 +39,15 @@ namespace BeeHive.L30.Domain.SL30.Base
                 conn.Dispose();
                 return result;
             }
+            catch (NpgsqlException ex)
+            {
+                Tracer.Instance.TraceException(ex);
+                throw new Exception(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw ex;
+                Tracer.Instance.TraceException(ex);
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -76,9 +82,15 @@ namespace BeeHive.L30.Domain.SL30.Base
                 conn.Dispose();
                 return result;
             }
+            catch (NpgsqlException ex)
+            {
+                Tracer.Instance.TraceException(ex);
+                throw new Exception(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw ex;
+                Tracer.Instance.TraceException(ex);
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -153,9 +165,15 @@ namespace BeeHive.L30.Domain.SL30.Base
                 }
                 return domain;
             }
+            catch (NpgsqlException ex)
+            {
+                Tracer.Instance.TraceException(ex);
+                throw new Exception(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw ex;
+                Tracer.Instance.TraceException(ex);
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -228,9 +246,15 @@ namespace BeeHive.L30.Domain.SL30.Base
                     cmd.ExecuteNonQuery();
                 }
             }
+            catch (NpgsqlException ex)
+            {
+                Tracer.Instance.TraceException(ex);
+                throw new Exception(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw ex;
+                Tracer.Instance.TraceException(ex);
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -256,10 +280,12 @@ namespace BeeHive.L30.Domain.SL30.Base
             }
             catch(NpgsqlException ex)
             {
+                Tracer.Instance.TraceException(ex);
                 throw new Exception(ex.Message);
             }
             catch (Exception ex)
             {
+                Tracer.Instance.TraceException(ex);
                 throw new Exception(ex.Message);
             }
             finally
@@ -311,9 +337,15 @@ namespace BeeHive.L30.Domain.SL30.Base
                 }
                 return properties;
             }
+            catch (NpgsqlException ex)
+            {
+                Tracer.Instance.TraceException(ex);
+                throw new Exception(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw ex;
+                Tracer.Instance.TraceException(ex);
+                throw new Exception(ex.Message);
             }
         }
         /// <summary>

@@ -1,6 +1,7 @@
 ﻿using BeeHive.L20.Services.SL10.IServices;
 using BeeHive.L20.Services.SL20.Model;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace BeeHive.L10.API.Controllers
@@ -28,8 +29,15 @@ namespace BeeHive.L10.API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<RoleMenuModel>> Get()
         {
-            List<RoleMenuModel> record = _roleMenu.GetAll();
-            return Ok(record);
+            try
+            {
+                List<RoleMenuModel> record = _roleMenu.GetAll();
+                return Ok(record);
+            }catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+          
         }
         /// <summary>
         /// Get a role menu by id
@@ -39,25 +47,37 @@ namespace BeeHive.L10.API.Controllers
         [HttpGet("{id}")]
         public ActionResult<RoleMenuModel> GetById(int id)
         {
-            RoleMenuModel record = _roleMenu.GetById(id);
-            return Ok(record);
+            try
+            {
+                RoleMenuModel record = _roleMenu.GetById(id);
+                return Ok(record);
+            }catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+            
         }
         /// <summary>
-        /// Create a new role menu
+        /// Create a role menu
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
         public ActionResult<RoleMenuModel> Create([FromBody]RoleMenuModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                RoleMenuModel record = _roleMenu.Create(model);
-                return Created("Test uri", record);
+                if (ModelState.IsValid)
+                {
+                    RoleMenuModel record = _roleMenu.Create(model);
+                    return Created("Test uri", record);
+                }
+                else
+                    return ValidationProblem();
             }
-            else
+            catch(Exception ex)
             {
-                return ValidationProblem();
+                return StatusCode(500,ex.Message);
             }
         }
         /// <summary>
@@ -68,15 +88,20 @@ namespace BeeHive.L10.API.Controllers
         [HttpPut]
         public ActionResult<RoleMenuModel> Update([FromBody]RoleMenuModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                RoleMenuModel record = _roleMenu.Update(model);
-                return Ok(record);
+                if (ModelState.IsValid)
+                {
+                    RoleMenuModel record = _roleMenu.Update(model);
+                    return Ok(record);
+                }
+                else
+                    return ValidationProblem();
             }
-            else
+            catch(Exception ex)
             {
-                return ValidationProblem();
-            }
+                return StatusCode(500, ex.Message);
+            } 
         }
         /// <summary>
         /// Delete a role menu
@@ -86,8 +111,15 @@ namespace BeeHive.L10.API.Controllers
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            _roleMenu.Delete(id);
-            return Ok("Role deleted successfully.");
+            try
+            {
+                _roleMenu.Delete(id);
+                return Ok("Role deleted successfully.");
+            }catch(Exception ex)
+            {
+                return StatusCode(500,ex.Message);
+            }
+          
         }
     }
 }

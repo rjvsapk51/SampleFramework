@@ -10,4 +10,8 @@
     <PackageReference Include="Npgsql" Version="4.0.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BeeHive.L90.Generics\BeeHive.L90.Generics.csproj" />
+  </ItemGroup>
+
 </Project>

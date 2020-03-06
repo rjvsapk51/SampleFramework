@@ -32,8 +32,33 @@ namespace BeeHive.L10.API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<MenuModel>> Get()
         {
-            List<MenuModel> record = _menu.GetAll();
-            return Ok(record);
+            try
+            {
+                List<MenuModel> record = _menu.GetAll();
+                return Ok(record);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        /// <summary>
+        /// Get a menu by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public ActionResult<MenuModel> GetById(int id)
+        {
+            try
+            {
+                MenuModel record = _menu.GetById(id);
+                return Ok(record);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
         /// <summary>
         /// Create Menu
@@ -43,13 +68,20 @@ namespace BeeHive.L10.API.Controllers
         [HttpPost]
         public ActionResult<MenuModel> Create([FromBody]MenuModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                MenuModel menu = _menu.Create(model);
-                return menu;
+                if (ModelState.IsValid)
+                {
+                    MenuModel menu = _menu.Create(model);
+                    return menu;
+                }
+                else
+                    return ValidationProblem();
+            }catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
             }
-            else
-                return ValidationProblem();
+            
         }
         /// <summary>
         /// Update a menu
@@ -59,15 +91,21 @@ namespace BeeHive.L10.API.Controllers
         [HttpPut]
         public ActionResult<MenuModel> Update([FromBody]MenuModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                MenuModel record = _menu.Update(model);
-                return Ok(record);
-            }
-            else
+                if (ModelState.IsValid)
+                {
+                    MenuModel record = _menu.Update(model);
+                    return Ok(record);
+                }
+                else
+                    return ValidationProblem();
+            }catch (Exception ex)
             {
-                return ValidationProblem();
+                return StatusCode(500, ex.Message);
             }
+           
+
         }
         /// <summary>
         /// Delete a role menu
@@ -77,8 +115,15 @@ namespace BeeHive.L10.API.Controllers
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            _menu.Delete(id);
-            return Ok("Role deleted successfully.");
+            try
+            {
+                _menu.Delete(id);
+                return Ok("Role deleted successfully.");
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }

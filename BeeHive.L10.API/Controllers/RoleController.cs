@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BeeHive.L20.Services.SL10.IServices;
+﻿using BeeHive.L20.Services.SL10.IServices;
 using BeeHive.L20.Services.SL20.Model;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 
 namespace BeeHive.L10.API.Controllers
 {
@@ -32,8 +31,15 @@ namespace BeeHive.L10.API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<RoleModel>> Get()
         {
-            List<RoleModel> record = _role.GetAll();
-            return Ok(record);
+            try
+            {
+                List<RoleModel> record = _role.GetAll();
+                return Ok(record);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500,ex.Message);
+            }
         }
         /// <summary>
         /// Get a role by id
@@ -43,8 +49,15 @@ namespace BeeHive.L10.API.Controllers
         [HttpGet("{id}")]
         public ActionResult<RoleModel> GetById(int id)
         {
-            RoleModel record = _role.GetById(id);
-            return Ok(record);
+            try
+            {
+                RoleModel record = _role.GetById(id);
+                return Ok(record);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
         /// <summary>
         /// Create a new role
@@ -54,36 +67,47 @@ namespace BeeHive.L10.API.Controllers
         [HttpPost]
         public ActionResult<RoleModel> Create([FromBody]RoleModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                RoleModel record = _role.Create(model);
-                return Created("Test uri",record);
+                if (ModelState.IsValid)
+                {
+                    RoleModel record = _role.Create(model);
+                    return Created("Test uri", record);
+                }
+                else
+                    return ValidationProblem();
             }
-            else
+            catch(Exception ex)
             {
-                return ValidationProblem();
+                return StatusCode(500,ex.Message);
             }
         }
         /// <summary>
-        /// 
+        /// Update a role
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPut]
         public ActionResult<RoleModel> Update([FromBody]RoleModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                RoleModel record = _role.Update(model);
-                return  Ok(record);
+                if (ModelState.IsValid)
+                {
+                    RoleModel record = _role.Update(model);
+                    return Ok(record);
+                }
+                else return ValidationProblem();
             }
-            else
+            catch(Exception ex)
             {
-                return ValidationProblem();
+                return StatusCode(500,ex.Message);
             }
+            
+            
         }
         /// <summary>
-        /// 
+        /// Delete a role
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -96,11 +120,8 @@ namespace BeeHive.L10.API.Controllers
                 return Ok("Role deleted successfully.");
             }catch(Exception ex)
             {
-                throw new Exception(ex.Message);
+                return StatusCode(500, ex.Message);
             }
-           
         }
-
-
     }
 }
