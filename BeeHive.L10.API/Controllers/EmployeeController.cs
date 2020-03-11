@@ -38,7 +38,7 @@ namespace BeeHive.L10.API.Controllers
         /// <param name="id"> this is test variables.</param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        [Authorize(Roles = "User,Admin")]
+        [Authorize(Roles = "User")]
         public ActionResult<EmployeesModel> GetById(int id)
         {
            

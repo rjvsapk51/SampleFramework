@@ -183,5 +183,12 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:BeeHive.L10.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
     </members>
 </doc>
