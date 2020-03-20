@@ -34,3 +34,18 @@ CREATE TABLE public.beehive_role_menu
     amend boolean NOT NULL,
     strike_out boolean NOT NULL
 )
+--Login setup
+CREATE TABLE public.hopper
+(
+    id SERIAL PRIMARY KEY,
+    identity character varying(200) NOT NULL ,
+    token character varying(200) NOT NULL,
+    individual_id  bigint NOT NULL,
+    is_super_hopper boolean NOT NULL,
+    is_blocked boolean NOT NULL,
+    last_hopped timestamp,
+    created_on timestamp,
+    created_by bigint,
+    updated_on timestamp,
+    updated_by bigint
+)

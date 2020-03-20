@@ -1,17 +1,22 @@
 ﻿using BeeHive.L20.Services.SL10.IServices;
+using BeeHive.L20.Services.SL10.IServices.Common;
 using BeeHive.L20.Services.SL11.Services;
-using BeeHive.L30.Domain.SL10.IRepository;
-using BeeHive.L30.Domain.SL11.Repository;
+using BeeHive.L20.Services.SL11.Services.Common;
+using BeeHive.L30.Domain.SL10.IRepository.Common;
+using BeeHive.L30.Domain.SL11.Repository.Common;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BeeHive.L10.API.Loaders
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DependencyContainer
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
         public static void Initialize(IServiceCollection services)
         {
             services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
@@ -22,6 +27,9 @@ namespace BeeHive.L10.API.Loaders
             services.AddSingleton<IRoleServices, RoleServices>();
             services.AddSingleton<IRoleMenuRepository, RoleMenuRepository>();
             services.AddSingleton<IRoleMenuServices, RoleMenuServices>();
+            services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IUserServices, UserServices>();
+
         }
     }
 }

@@ -1,9 +1,7 @@
-﻿using BeeHive.L30.Domain.SL20.Entities.System;
-using System;
+﻿using BeeHive.L30.Domain.SL20.Entities.Common;
 using System.Collections.Generic;
-using System.Text;
 
-namespace BeeHive.L30.Domain.SL10.IRepository
+namespace BeeHive.L30.Domain.SL10.IRepository.Common
 {
     public interface IRoleMenuRepository
     {

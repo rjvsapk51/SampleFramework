@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using BeeHive.L20.Services.SL20.Model;
+using BeeHive.L20.Services.SL20.Model.Common;
 using BeeHive.L30.Domain.SL20.Entities;
-using BeeHive.L30.Domain.SL20.Entities.System;
+using BeeHive.L30.Domain.SL20.Entities.Common;
 
 namespace BeeHive.L20.Services.SL15.Mappers
 {
@@ -16,6 +17,8 @@ namespace BeeHive.L20.Services.SL15.Mappers
             CreateMap<RoleModel, Role>();
             CreateMap<Role, RoleModel > ();
             CreateMap<RoleMenu, RoleMenuModel>();
+            CreateMap<Hopper, HopperModel>();
+            CreateMap<HopperModel, Hopper>();
         }
     }
 }

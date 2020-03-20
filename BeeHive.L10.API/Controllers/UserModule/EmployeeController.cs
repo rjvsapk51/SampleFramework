@@ -1,6 +1,6 @@
-﻿using BeeHive.L20.Services.SL10.IServices;
+﻿using BeeHive.L10.API.Helpers;
+using BeeHive.L20.Services.SL10.IServices;
 using BeeHive.L20.Services.SL20.Model;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -10,7 +10,8 @@ namespace BeeHive.L10.API.Controllers
     /// Employee controller
     /// </summary>
     [Route("[controller]")]
-    [ApiController] 
+    [ApiController]
+    [ServiceFilter(typeof(AuthorizationFilter))]
     public class EmployeeController : ControllerBase
     {
         IEmployeeService _employee;
@@ -38,7 +39,6 @@ namespace BeeHive.L10.API.Controllers
         /// <param name="id"> this is test variables.</param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        [Authorize(Roles = "User")]
         public ActionResult<EmployeesModel> GetById(int id)
         {
            

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BeeHive.L20.Services.SL10.IServices;
 using BeeHive.L20.Services.SL20.Model;
-using BeeHive.L30.Domain.SL10.IRepository;
+using BeeHive.L30.Domain.SL10.IRepository.Common;
 using BeeHive.L30.Domain.SL20.Entities;
 using System.Collections.Generic;
 

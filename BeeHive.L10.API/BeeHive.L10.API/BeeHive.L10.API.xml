@@ -4,53 +4,9 @@
         <name>BeeHive.L10.API</name>
     </assembly>
     <members>
-        <member name="T:BeeHive.L10.API.Controllers.EmployeeController">
-            <summary>
-            Employee controller
-            </summary>
-        </member>
-        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.#ctor(BeeHive.L20.Services.SL10.IServices.IEmployeeService)">
-            <summary>
-            Constructor
-            </summary>
-            <param name="employee"></param>
-        </member>
-        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.Get">
-            <summary>
-            This is test
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.GetById(System.Int32)">
-            <summary>
-            This is second test
-            </summary>
-            <param name="id"> this is test variables.</param>
-            <returns></returns>
-        </member>
-        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.Create(BeeHive.L20.Services.SL20.Model.EmployeesModel)">
-            <summary>
-            create
-            </summary>
-            <param name="model">dd</param>
-            <returns>ssss</returns>
-        </member>
-        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.Update(BeeHive.L20.Services.SL20.Model.EmployeesModel)">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.Delete(System.Int32)">
-            <summary>
-            
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
         <member name="T:BeeHive.L10.API.Controllers.MenuController">
             <summary>
-            Employee controller
+            Menu controller
             </summary>
         </member>
         <member name="M:BeeHive.L10.API.Controllers.MenuController.#ctor(BeeHive.L20.Services.SL10.IServices.IMenuService)">
@@ -181,6 +137,144 @@
             Delete a role menu
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BeeHive.L10.API.Controllers.Common.UserController">
+            <summary>
+            User Create, Read, Update and Delete
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:BeeHive.L10.API.Controllers.Common.UserController.#ctor(BeeHive.L20.Services.SL10.IServices.Common.IUserServices)" -->
+        <member name="M:BeeHive.L10.API.Controllers.Common.UserController.Get">
+            <summary>
+            Get all user
+            </summary>
+            <returns>Menu list</returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.Common.UserController.GetById(System.Int32)">
+            <summary>
+            Get user by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.Common.UserController.Create(BeeHive.L20.Services.SL20.Model.Common.HopperModel)">
+            <summary>
+            Create User
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.Common.UserController.Update(BeeHive.L20.Services.SL20.Model.Common.HopperModel)">
+            <summary>
+            Update user
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.Common.UserController.Delete(System.Int32)">
+            <summary>
+            Delete a user
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BeeHive.L10.API.Controllers.EmployeeController">
+            <summary>
+            Employee controller
+            </summary>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.#ctor(BeeHive.L20.Services.SL10.IServices.IEmployeeService)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="employee"></param>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.Get">
+            <summary>
+            This is test
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.GetById(System.Int32)">
+            <summary>
+            This is second test
+            </summary>
+            <param name="id"> this is test variables.</param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.Create(BeeHive.L20.Services.SL20.Model.EmployeesModel)">
+            <summary>
+            create
+            </summary>
+            <param name="model">dd</param>
+            <returns>ssss</returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.Update(BeeHive.L20.Services.SL20.Model.EmployeesModel)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.EmployeeController.Delete(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BeeHive.L10.API.Helpers.AuthorizationFilter">
+            <summary>
+             If This class is called as an attribute in an action or a controller.
+             The controller has to pass through the authoriation test
+            </summary>
+        </member>
+        <member name="M:BeeHive.L10.API.Helpers.AuthorizationFilter.#ctor(Microsoft.AspNetCore.Mvc.Infrastructure.IActionDescriptorCollectionProvider)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="actionDescriptorCollectionProvider"></param>
+        </member>
+        <member name="M:BeeHive.L10.API.Helpers.AuthorizationFilter.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Prior to executing
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:BeeHive.L10.API.Helpers.AuthorizationFilter.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <summary>
+            Post executing.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:BeeHive.L10.API.Loaders.DependencyContainer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BeeHive.L10.API.Loaders.DependencyContainer.Initialize(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:BeeHive.L10.API.Loaders.SwaggerServiceExtension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BeeHive.L10.API.Loaders.SwaggerServiceExtension.AddSwaggerDocumentation(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Loaders.SwaggerServiceExtension.UseSwaggerDocumentation(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
             <returns></returns>
         </member>
         <member name="M:BeeHive.L10.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">

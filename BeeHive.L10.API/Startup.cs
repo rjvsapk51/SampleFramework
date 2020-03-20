@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BeeHive.L10.API.Helpers;
 using BeeHive.L10.API.Loaders;
 using BeeHive.L20.Services.SL15.Mappers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -78,6 +79,7 @@ namespace BeeHive.L10.API
             //        .AllowCredentials());
             //});
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddScoped<AuthorizationFilter>();
         }
         /// <summary>
         /// 

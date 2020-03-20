@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BeeHive.L10.API.Controllers
 {
     /// <summary>
-    /// Employee controller
+    /// Menu controller
     /// </summary>
     [Route("[controller]")]
     [ApiController]
