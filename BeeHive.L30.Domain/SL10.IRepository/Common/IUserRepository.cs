@@ -12,5 +12,6 @@ namespace BeeHive.L30.Domain.SL10.IRepository.Common
         Hopper Create(Hopper domain);
         Hopper Update(Hopper domain);
         void Delete(int id);
+        Hopper GetUserByUserNameAndPassword(string username,string password);
     }
 }

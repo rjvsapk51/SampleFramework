@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BeeHive.L20.Services.SL10.IServices.Common;
+using BeeHive.L20.Services.SL20.Model;
 using BeeHive.L20.Services.SL20.Model.Common;
 using BeeHive.L30.Domain.SL10.IRepository.Common;
 using BeeHive.L30.Domain.SL20.Entities.Common;
@@ -42,6 +43,10 @@ namespace BeeHive.L20.Services.SL11.Services.Common
         public HopperModel Update(HopperModel model)
         {
             return _mapper.Map<HopperModel>(_userRepository.Update(_mapper.Map<Hopper>(model)));
+        }
+        public HopperModel GetUserByUserNameAndPassword(LoginModel model)
+        {
+            return _mapper.Map<HopperModel>(_userRepository.GetUserByUserNameAndPassword(model.Username,model.Password));
         }
     }
 }

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using BeeHive.L30.Domain.SL20.Entities.Generic;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BeeHive.L30.Domain.SL20.Entities.Common
 {
     [Table("hopper")]
-    public class Hopper
+    public class Hopper: CommonAttribute
     {
         [Key]
         [Column("id")]
@@ -22,13 +23,13 @@ namespace BeeHive.L30.Domain.SL20.Entities.Common
         public bool IsBlocked { get; set; }
         [Column("last_hopped")]
         public DateTime LastHopped { get; set; }
-        [Column("created_on")]
-        public DateTime CreatedOn { get; set; }
-        [Column("created_by")]
-        public long CreatedBy { get; set; }
-        [Column("updated_on")]
-        public DateTime UpdatedOn { get; set; }
-        [Column("updated_by")]
-        public long UpdatedBy { get; set; }      
+        //[Column("created_on")]
+        //public DateTime CreatedOn { get; set; }
+        //[Column("created_by")]
+        //public long CreatedBy { get; set; }
+        //[Column("updated_on")]
+        //public DateTime UpdatedOn { get; set; }
+        //[Column("updated_by")]
+        //public long UpdatedBy { get; set; }      
     }
 }

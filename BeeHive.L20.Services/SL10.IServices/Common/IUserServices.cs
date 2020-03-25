@@ -1,4 +1,5 @@
-﻿using BeeHive.L20.Services.SL20.Model.Common;
+﻿using BeeHive.L20.Services.SL20.Model;
+using BeeHive.L20.Services.SL20.Model.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,5 +13,6 @@ namespace BeeHive.L20.Services.SL10.IServices.Common
         HopperModel Create(HopperModel model);
         HopperModel Update(HopperModel model);
         void Delete(int id);
+        HopperModel GetUserByUserNameAndPassword(LoginModel model);
     }
 }

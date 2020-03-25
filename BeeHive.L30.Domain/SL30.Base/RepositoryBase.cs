@@ -7,14 +7,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Reflection;
-
-
 namespace BeeHive.L30.Domain.SL30.Base
 {
     public abstract class RepositoryBase<T>
     {
         //connection string 
-        private const string connectionString = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=ne0erp@16;Database=BeeHive;";
+        public const string connectionString = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=ne0erp@16;Database=BeeHive;";
         /// <summary>
         /// This method gets all the record of the defined entity.
         /// </summary>
