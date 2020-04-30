@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Text;
-
+using Microsoft.AspNetCore.Cors;
 namespace BeeHive.L10.API
 {
     public class Startup
@@ -70,14 +70,11 @@ namespace BeeHive.L10.API
                 };
             });
 
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("CorsPolicy",
-            //        builder => builder.AllowAnyOrigin()
-            //        .AllowAnyMethod()
-            //        .AllowAnyHeader()
-            //        .AllowCredentials());
-            //});
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin",
+                    builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddScoped<AuthorizationFilter>();
         }
@@ -97,7 +94,8 @@ namespace BeeHive.L10.API
             //{
             //    app.UseHsts();
             //}
-           // app.UseCors("CorsPolicy");
+            // app.UseCors("CorsPolicy");
+            app.UseCors(builder =>    builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod());
             app.UseSwagger();
             SwaggerServiceExtension.UseSwaggerDocumentation(app);
             app.UseAuthentication();

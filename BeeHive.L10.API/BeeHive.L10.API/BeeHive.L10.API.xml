@@ -4,6 +4,13 @@
         <name>BeeHive.L10.API</name>
     </assembly>
     <members>
+        <member name="M:BeeHive.L10.API.Controllers.AuthController.Login(BeeHive.L20.Services.SL20.Model.LoginModel)">
+            <summary>
+            Username and password are excepted
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="T:BeeHive.L10.API.Controllers.MenuController">
             <summary>
             Menu controller
