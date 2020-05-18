@@ -125,5 +125,31 @@ namespace BeeHive.L10.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        /// <summary>
+        /// Get menu lookup
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetMenuLookup")]
+        public ActionResult<IEnumerable<MenuLookup>> GetMenuLookup()
+        {
+            try
+            {
+                List<MenuModel> record = _menu.GetAll();
+                List<MenuLookup> recordreturn = new List<MenuLookup>();
+                record.ForEach(item => {
+                    MenuLookup menu = new MenuLookup
+                    {
+                        Id = item.Id,
+                        Banner = item.Banner
+                    };
+                    recordreturn.Add(menu);
+                });
+                return Ok(recordreturn);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

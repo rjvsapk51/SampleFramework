@@ -18,7 +18,7 @@ namespace BeeHive.L30.Domain.SL20.Entities.Common
         [Column("routerlink")]
         public string RouterLink { get; set; }
         [Column("order_number")]
-        public int OrderNumber { get; set; }
+        public long OrderNumber { get; set; }
         [Column("access_to_all")]
         public bool AccessToAll { get; set; }
         [Column("is_dashboard_menu")]

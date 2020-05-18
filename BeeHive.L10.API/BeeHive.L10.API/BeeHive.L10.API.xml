@@ -56,6 +56,12 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:BeeHive.L10.API.Controllers.MenuController.GetMenuLookup">
+            <summary>
+            Get menu lookup
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:BeeHive.L10.API.Controllers.RoleController">
             <summary>
             CRUD Roles
