@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BeeHive.L20.Services.SL10.IServices;
 using BeeHive.L20.Services.SL20.Model;
+using BeeHive.L20.Services.SL20.Model.Lookup;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -126,25 +127,16 @@ namespace BeeHive.L10.API.Controllers
             }
         }
         /// <summary>
-        /// Get menu lookup
+        /// Fetch Id, Banner of all the menu
         /// </summary>
-        /// <returns></returns>
-        [HttpGet("GetMenuLookup")]
-        public ActionResult<IEnumerable<MenuLookup>> GetMenuLookup()
+        /// <returns>Menu as lookup</returns>
+        [HttpGet("GetAllMenuLookup")]
+        public ActionResult<IEnumerable<MenuLookupModel>> GetAllMenuLookup()
         {
             try
             {
-                List<MenuModel> record = _menu.GetAll();
-                List<MenuLookup> recordreturn = new List<MenuLookup>();
-                record.ForEach(item => {
-                    MenuLookup menu = new MenuLookup
-                    {
-                        Id = item.Id,
-                        Banner = item.Banner
-                    };
-                    recordreturn.Add(menu);
-                });
-                return Ok(recordreturn);
+                List<MenuLookupModel> record = _menu.GetAllMenuLookup();
+                return Ok(record);
             }
             catch (Exception ex)
             {

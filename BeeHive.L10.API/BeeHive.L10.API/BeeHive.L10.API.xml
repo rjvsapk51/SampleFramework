@@ -56,11 +56,11 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:BeeHive.L10.API.Controllers.MenuController.GetMenuLookup">
+        <member name="M:BeeHive.L10.API.Controllers.MenuController.GetAllMenuLookup">
             <summary>
-            Get menu lookup
+            Fetch Id, Banner of all the menu
             </summary>
-            <returns></returns>
+            <returns>Menu as lookup</returns>
         </member>
         <member name="T:BeeHive.L10.API.Controllers.RoleController">
             <summary>

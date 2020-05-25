@@ -1,4 +1,5 @@
-﻿using BeeHive.L30.Domain.SL20.Entities.Common;
+﻿using BeeHive.L30.Domain.SL05.DomainModel.Lookup;
+using BeeHive.L30.Domain.SL20.Entities.Common;
 using System.Collections.Generic;
 
 namespace BeeHive.L30.Domain.SL10.IRepository.Common
@@ -10,5 +11,6 @@ namespace BeeHive.L30.Domain.SL10.IRepository.Common
         Menu Create(Menu domain);
         Menu Update(Menu domain);
         void Delete(int id);
+        List<MenuLookup> GetAllMenuLookup();
     }
 }

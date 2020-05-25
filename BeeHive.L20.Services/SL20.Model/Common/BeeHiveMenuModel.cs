@@ -18,9 +18,4 @@ namespace BeeHive.L20.Services.SL20.Model
         public long ParentId { get; set; }
         public string Description { get; set; }
     }
-    public class MenuLookup
-    {
-        public long Id { get; set; }
-        public string Banner { get; set; }
-    }
 }

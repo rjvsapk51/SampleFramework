@@ -1,4 +1,5 @@
 ﻿using BeeHive.L20.Services.SL20.Model;
+using BeeHive.L20.Services.SL20.Model.Lookup;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,5 +13,6 @@ namespace BeeHive.L20.Services.SL10.IServices
         MenuModel Create(MenuModel model);
         MenuModel Update(MenuModel model);
         void Delete(int id);
+        List<MenuLookupModel> GetAllMenuLookup();
     }
 }
