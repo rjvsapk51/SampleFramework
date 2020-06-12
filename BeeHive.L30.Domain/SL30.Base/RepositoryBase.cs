@@ -1,22 +1,36 @@
 ﻿using BeeHive.L90.Generics.SL10;
 using Dapper;
+using Microsoft.Extensions.Configuration;
 using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 namespace BeeHive.L30.Domain.SL30.Base
 {
     public abstract class RepositoryBase<T>
     {
+
         //connection string 
-        public const string connectionString = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=ne0erp@16;Database=BeeHive;";
+       public string connectionString = string.Empty;
         /// <summary>
         /// This method gets all the record of the defined entity.
         /// </summary>
         /// <returns></returns>
+        public RepositoryBase()
+        {
+            //Get connection string from appsettings.json
+            var configurationBuilder = new ConfigurationBuilder();
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
+            configurationBuilder.AddJsonFile(path, false);
+            var root = configurationBuilder.Build();
+            connectionString = root.GetSection("ConnectionStrings").GetSection("DefaultConnection").Value;
+            if (string.IsNullOrEmpty(connectionString))
+                throw new Exception("Connection string is null or empty.");
+        }
         public virtual List<T> All()
         {
             NpgsqlConnection conn = new NpgsqlConnection(connectionString);
