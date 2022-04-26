@@ -1,4 +1,5 @@
-﻿using BeeHive.L20.Services.SL10.IServices;
+﻿using BeeHive.L10.API.Authentication;
+using BeeHive.L20.Services.SL10.IServices;
 using BeeHive.L20.Services.SL10.IServices.Common;
 using BeeHive.L20.Services.SL11.Services;
 using BeeHive.L20.Services.SL11.Services.Common;
@@ -19,6 +20,7 @@ namespace BeeHive.L10.API.Loaders
         /// <param name="services"></param>
         public static void Initialize(IServiceCollection services)
         {
+            services.AddSingleton<ITokenGenerator,TokenGenerator>();
             services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
             services.AddSingleton<IEmployeeService, EmployeeService>();
             services.AddSingleton<IMenuRepository, MenuRepository>();
@@ -29,6 +31,8 @@ namespace BeeHive.L10.API.Loaders
             services.AddSingleton<IRoleMenuServices, RoleMenuServices>();
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IUserServices, UserServices>();
+            services.AddSingleton<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddSingleton<IRefreshTokenService, RefreshTokenService>();
 
         }
     }

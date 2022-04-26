@@ -72,7 +72,7 @@ namespace BeeHive.L30.Domain.SL30.Base
         /// </summary>
         /// <param name="id">ID of the record to be fetched</param>
         /// <returns></returns>
-        public virtual T GetById(int id)
+        public virtual T GetById(long id)
         {
             NpgsqlConnection conn = new NpgsqlConnection(connectionString);
             try
@@ -279,7 +279,7 @@ namespace BeeHive.L30.Domain.SL30.Base
         /// Delete Method
         /// </summary>
         /// <param name="id">Delete Entity id</param>
-        public virtual void Delete(int id)
+        public virtual void Delete(long id)
         {
             NpgsqlConnection conn = new NpgsqlConnection(connectionString);
             try

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BeeHive.L20.Services.SL10.IServices.Common;
 using BeeHive.L20.Services.SL20.Model.Common;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace BeeHive.L10.API.Controllers.Common
     /// <summary>
     /// User Create, Read, Update and Delete
     /// </summary>
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class UserController : ControllerBase

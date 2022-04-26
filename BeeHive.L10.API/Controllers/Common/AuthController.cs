@@ -1,23 +1,33 @@
-﻿using BeeHive.L20.Services.SL10.IServices.Common;
+﻿using BeeHive.L10.API.Authentication;
+using BeeHive.L20.Services.SL10.IServices.Common;
 using BeeHive.L20.Services.SL20.Model;
 using BeeHive.L20.Services.SL20.Model.Common;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace BeeHive.L10.API.Controllers
 {
+    /// <summary>
+    /// Authentications
+    /// </summary>
     [Route("[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
         IUserServices _user;
-        public AuthController(IUserServices user)
+        ITokenGenerator _tokenGenerator;
+        private readonly IRefreshTokenService _token;
+        /// <summary>
+        /// Authentications
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="tokenGenerator"></param>
+        /// <param name="token"></param>
+        public AuthController(IUserServices user,ITokenGenerator tokenGenerator, IRefreshTokenService token)
         {
             _user = user;
+            _tokenGenerator = tokenGenerator;
+            _token = token;
         }
         /// <summary>
         /// Username and password are excepted
@@ -30,21 +40,38 @@ namespace BeeHive.L10.API.Controllers
         {
             HopperModel user = _user.GetUserByUserNameAndPassword(model);
             if (user == null) return Unauthorized("Invalid username and/or password.");
-            var claims = new[] 
-            {
-                new Claim(JwtRegisteredClaimNames.Sub , model.Username),
-                new Claim(JwtRegisteredClaimNames.Jti , model.Password),
-                new Claim(ClaimTypes.Role,"User")
-            };
-            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MySuperSecuredKey"));
-            JwtSecurityToken token = new JwtSecurityToken(
-                issuer: "http://oec.com",
-                audience: "http://oec.com",
-                expires: DateTime.UtcNow.AddHours(10),
-                claims: claims,
-                signingCredentials: new SigningCredentials(signingKey,SecurityAlgorithms.HmacSha256)
-                );
-            return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token),expiration = token.ValidTo } );
+            AuthenticationModel auth = _tokenGenerator.GenerateToken(user);
+            auth.RefreshToken = _tokenGenerator.GenerateRefereshToken(user.Id);
+            Response.Cookies.Append("X-Refresh-Token", auth.RefreshToken.AccessToken, new CookieOptions() { HttpOnly = true, SameSite = SameSiteMode.Strict });
+            return Ok(auth );
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="refreshTokenRequest"></param>
+        /// <returns></returns>
+        [Route("refreshtoken")]
+        [HttpPost]
+        public IActionResult RefreshToken(RefreshTokenRequestModel refreshTokenRequest)
+        {
+            //Check if refresh token exists
+            RefreshTokenModel refreshToken = _token.GetByRefreshToken(refreshTokenRequest.Token);
+            if (refreshToken == null)     
+                return BadRequest();
+            //Check if User Exists.
+            HopperModel user =_user.GetById(refreshToken.HopperId);
+            if (user == null)
+                return BadRequest("User not found.");
+            //Check if validation token is valid.
+            if (!_tokenGenerator.ValidateRefreshToken(refreshTokenRequest.Token))
+                return BadRequest("Valifdation failed.");
+
+            _token.Delete(refreshToken.Id);
+            AuthenticationModel auth = _tokenGenerator.GenerateToken(user);
+            auth.RefreshToken = _tokenGenerator.GenerateRefereshToken(user.Id);
+            Response.Cookies.Append("X-Refresh-Token", auth.RefreshToken.AccessToken, new CookieOptions() { HttpOnly = true, SameSite = SameSiteMode.Strict });
+            return Ok(auth);
+
         }
     }
 }

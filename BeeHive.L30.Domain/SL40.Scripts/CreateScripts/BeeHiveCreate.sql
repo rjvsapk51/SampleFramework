@@ -49,3 +49,11 @@ CREATE TABLE public.hopper
     updated_on timestamp,
     updated_by bigint
 )
+--Request Token
+
+Create Table public.refresh_token
+(
+id SERIAL PRIMARY KEY,
+hopper_id bigint NOT NULL,
+refresh_token character varying(500) NOT NULL
+)

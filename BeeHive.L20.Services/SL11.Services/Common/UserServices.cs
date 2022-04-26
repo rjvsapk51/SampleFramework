@@ -34,7 +34,7 @@ namespace BeeHive.L20.Services.SL11.Services.Common
             return _mapper.Map<List<HopperModel>>(entities);
         }
 
-        public HopperModel GetById(int id)
+        public HopperModel GetById(long id)
         {
             Hopper entity = _userRepository.GetById(id);
             return _mapper.Map<HopperModel>(entity);

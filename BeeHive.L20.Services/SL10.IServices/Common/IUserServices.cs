@@ -9,7 +9,7 @@ namespace BeeHive.L20.Services.SL10.IServices.Common
     public interface IUserServices
     {
         List<HopperModel> GetAll();
-        HopperModel GetById(int id);
+        HopperModel GetById(long id);
         HopperModel Create(HopperModel model);
         HopperModel Update(HopperModel model);
         void Delete(int id);
