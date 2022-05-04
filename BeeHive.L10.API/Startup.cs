@@ -19,16 +19,16 @@ namespace BeeHive.L10.API
         {
             Configuration = configuration;
         }
-       
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-         
 
 
-      
+
+
             //Swagger implementation
             SwaggerServiceExtension.AddSwaggerDocumentation(services);
             // Auto Mapper Configurations
@@ -42,9 +42,10 @@ namespace BeeHive.L10.API
             DependencyContainer.Initialize(services);
             //JWT configuration
 
-            services.Configure<IdentityOptions>(options => { 
-            
-            
+            services.Configure<IdentityOptions>(options =>
+            {
+
+
             });
 
 
@@ -68,11 +69,26 @@ namespace BeeHive.L10.API
                 };
             });
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowOrigin",
-                    builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-            });
+            services.AddCors();
+
+
+            //options =>
+            //{
+            //    //options.AddPolicy("AllowOrigin",
+            //    //    builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
+            //    options.AddPolicy("MyCorsPolicy",
+            //    builder => builder
+            //    //.SetIsOriginAllowedToAllowWildcardSubdomains()
+            //    .WithOrigins("http://localhost:3000")
+            //    .AllowAnyMethod()
+            //    .AllowCredentials()
+            //    .AllowAnyHeader()
+            //    .Build()
+            //    );
+            //}
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddScoped<AuthorizationFilter>();
         }
@@ -92,13 +108,25 @@ namespace BeeHive.L10.API
             //{
             //    app.UseHsts();
             //}
-            // app.UseCors("CorsPolicy");
-            app.UseCors(builder =>    builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod());
+            app.UseHttpsRedirection();
+            app.UseRouting();
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()
+                .WithOrigins("http://localhost:3000").Build()
+                );
+
+
+
+
+            //app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod().AllowCredentials());
             app.UseSwagger();
             SwaggerServiceExtension.UseSwaggerDocumentation(app);
             app.UseAuthentication();
-            app.UseHttpsRedirection();
-            app.UseRouting();
+            
+     
             app.UseAuthorization();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }

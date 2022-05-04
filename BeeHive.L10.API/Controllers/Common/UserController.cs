@@ -13,7 +13,7 @@ namespace BeeHive.L10.API.Controllers.Common
     /// <summary>
     /// User Create, Read, Update and Delete
     /// </summary>
-    [Authorize]
+   /// [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class UserController : ControllerBase

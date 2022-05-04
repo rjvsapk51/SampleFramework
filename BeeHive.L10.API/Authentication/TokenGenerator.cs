@@ -37,11 +37,11 @@ namespace BeeHive.L10.API.Authentication
                 new Claim("Id",user.Id.ToString()),
                 new Claim(ClaimTypes.Role,"User")
             };
-            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MySuperSecuredKey"));
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MyTokenGenerator"));
             JwtSecurityToken token = new JwtSecurityToken(
                 issuer: "http://oec.com",
                 audience: "http://oec.com",
-                expires: DateTime.UtcNow.AddMinutes(1),
+                expires: DateTime.UtcNow.AddMinutes(30),
                 claims: claims,
                 signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
                 );
@@ -59,11 +59,11 @@ namespace BeeHive.L10.API.Authentication
         /// <returns></returns>
         public RefreshToken GenerateRefereshToken(long userId)
         {
-            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MySuperSecuredKey"));
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MyRefreshTokengenerator"));
             JwtSecurityToken token = new JwtSecurityToken(
                 issuer: "http://oec.com",
                 audience: "http://oec.com",
-                expires: DateTime.UtcNow.AddHours(10),
+                expires: DateTime.UtcNow.AddHours(1),
                 signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
                 );
             RefreshToken refreshToken = new RefreshToken
@@ -80,7 +80,7 @@ namespace BeeHive.L10.API.Authentication
         {
             TokenValidationParameters validationParameters = new TokenValidationParameters()
             {
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MySuperSecuredKey")),
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MyRefreshTokengenerator")),
                 ValidIssuer = "http://oec.com",
                 ValidAudience = "http://oec.com",
                 ValidateIssuer = true,

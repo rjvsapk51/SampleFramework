@@ -15,7 +15,7 @@ namespace BeeHive.L10.API.Authentication
         /// </summary>
         public string AccessToken { get; set; }
         public DateTime Expiration { get; set; }
-        public RefreshToken RefreshToken { get; set; }
+        public string Username { get; set; }
     }
     public class RefreshToken
     {

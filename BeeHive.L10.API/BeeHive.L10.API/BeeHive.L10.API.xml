@@ -59,11 +59,16 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:BeeHive.L10.API.Controllers.AuthController.RefreshToken(BeeHive.L10.API.Authentication.RefreshTokenRequestModel)">
+        <member name="M:BeeHive.L10.API.Controllers.AuthController.RefreshToken">
             <summary>
-            
+            Get Refresh Token
             </summary>
-            <param name="refreshTokenRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.AuthController.LogOut">
+            <summary>
+            Logout
+            </summary>
             <returns></returns>
         </member>
         <member name="T:BeeHive.L10.API.Controllers.MenuController">
@@ -211,6 +216,7 @@
             <summary>
             User Create, Read, Update and Delete
             </summary>
+            [Authorize]
         </member>
         <!-- Badly formed XML comment ignored for member "M:BeeHive.L10.API.Controllers.Common.UserController.#ctor(BeeHive.L20.Services.SL10.IServices.Common.IUserServices)" -->
         <member name="M:BeeHive.L10.API.Controllers.Common.UserController.Get">
