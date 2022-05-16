@@ -65,7 +65,7 @@ namespace BeeHive.L10.API
                     ValidateAudience = true,
                     ValidAudience = "http://oec.com",
                     ValidIssuer = "http://oec.com",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MySuperSecuredKey"))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MyTokenGenerator"))
                 };
             });
 

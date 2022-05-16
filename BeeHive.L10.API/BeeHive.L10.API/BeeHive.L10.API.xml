@@ -216,7 +216,6 @@
             <summary>
             User Create, Read, Update and Delete
             </summary>
-            [Authorize]
         </member>
         <!-- Badly formed XML comment ignored for member "M:BeeHive.L10.API.Controllers.Common.UserController.#ctor(BeeHive.L20.Services.SL10.IServices.Common.IUserServices)" -->
         <member name="M:BeeHive.L10.API.Controllers.Common.UserController.Get">
