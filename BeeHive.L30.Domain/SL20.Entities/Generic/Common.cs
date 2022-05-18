@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace BeeHive.L30.Domain.SL20.Entities.Generic
 {
@@ -14,6 +12,6 @@ namespace BeeHive.L30.Domain.SL20.Entities.Generic
         [Column("updated_by")]
         public long UpdatedBy { get; set; }
         [Column("updated_on")]
-        public DateTime UpdatedOn { get; set; }
+        public DateTime UpdatedOn { get; set; } = DateTime.Now;
     }
 }

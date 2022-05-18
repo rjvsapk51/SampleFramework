@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using BeeHive.L20.Services.SL10.IServices.Common;
 using BeeHive.L20.Services.SL20.Model.Common;
@@ -13,7 +14,7 @@ namespace BeeHive.L10.API.Controllers.Common
     /// <summary>
     /// User Create, Read, Update and Delete
     /// </summary>
-   [Authorize]
+   //[Authorize]
     [Route("[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -74,6 +75,10 @@ namespace BeeHive.L10.API.Controllers.Common
             {
                 if (ModelState.IsValid)
                 {
+                    var claimsIdentity = User.Identity as ClaimsIdentity;
+                    long Id = Convert.ToInt64(claimsIdentity.FindFirst("Id").Value);
+                    model.CreatedBy = Id;
+                    model.CreatedOn = DateTime.Now;
                     HopperModel menu = _user.Create(model);
                     return menu;
                 }
@@ -98,6 +103,10 @@ namespace BeeHive.L10.API.Controllers.Common
             {
                 if (ModelState.IsValid)
                 {
+                    var claimsIdentity = User.Identity as ClaimsIdentity;
+                    long Id = Convert.ToInt64(claimsIdentity.FindFirst("Id").Value);
+                    model.UpdatedBy = Id;
+                    model.UpdatedOn = DateTime.Now;
                     HopperModel record = _user.Update(model);
                     return Ok(record);
                 }

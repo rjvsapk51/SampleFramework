@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BeeHive.L30.Domain.SL20.Entities.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace BeeHive.L30.Domain.SL20.Entities.Common
 {
     [Table("beehive_role_menu")]
-    public class RoleMenu
+    public class RoleMenu: CommonAttribute
     {
         [Key]
         [Column("id")]

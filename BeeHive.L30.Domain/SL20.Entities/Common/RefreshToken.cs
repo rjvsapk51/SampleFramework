@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace BeeHive.L30.Domain.SL20.Entities.Common
 {
@@ -14,8 +12,11 @@ namespace BeeHive.L30.Domain.SL20.Entities.Common
         public long Id { get; set; }
         [Column("hopper_id")]
         public long HopperId { get; set; }
-
         [Column("refresh_token")]
         public string RefreshToken { get; set; }
+        [Column("expiration")]
+        public DateTime Expiration { get; set; }
+        [Column("created_on")]
+        public DateTime CreatedOn { get; set; }
     }
 }

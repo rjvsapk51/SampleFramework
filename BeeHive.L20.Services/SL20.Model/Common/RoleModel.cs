@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using BeeHive.L20.Services.SL20.Model.Common;
 
 namespace BeeHive.L20.Services.SL20.Model
 {
-    public partial class RoleModel
+    public partial class RoleModel : CommonAttributeModel
     {
         public int Id { get; set; }
         public string Banner { get; set; }

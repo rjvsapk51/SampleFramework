@@ -20,6 +20,7 @@ namespace BeeHive.L20.Services.SL11.Services.Common
 
         public HopperModel Create(HopperModel model)
         {
+
             return _mapper.Map<HopperModel>(_userRepository.Create(_mapper.Map<Hopper>(model)));
         }
 
