@@ -10,5 +10,6 @@ namespace BeeHive.L30.Domain.SL10.IRepository.Common
         RoleMenu Create(RoleMenu domain);
         RoleMenu Update(RoleMenu domain);
         void Delete(long id);
+        List<RoleMenu> GetByRoleId(long roleId);
     }
 }

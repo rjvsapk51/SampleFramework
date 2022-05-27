@@ -24,6 +24,8 @@ namespace BeeHive.L20.Services.SL15.Mappers
             CreateMap<HopperModel, Hopper>();
             CreateMap<RefreshTokenModel, RefreshTokens>();
             CreateMap<RefreshTokens, RefreshTokenModel>();
+            CreateMap<UserRolesModel, UserRoles>();
+            CreateMap<UserRoles, UserRolesModel>();
         }
     }
 }

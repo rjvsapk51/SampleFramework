@@ -53,6 +53,20 @@ CREATE TABLE public.hopper
     updated_on timestamp,
     updated_by bigint
 )
+
+--USER-ROLE setup
+CREATE TABLE public.beehive_user_role
+(
+    id SERIAL PRIMARY KEY,
+   hopper_id bigint NOT NULL REFERENCES hopper(id),
+   role_id  bigint NOT NULL REFERENCES beehive_role(id),
+    created_on timestamp,
+    created_by bigint,
+    updated_on timestamp,
+    updated_by bigint
+)
+
+
 --Request Token
 
 Create Table public.refresh_token

@@ -47,10 +47,10 @@ namespace BeeHive.L10.API.Controllers
             Response.Cookies.Append("X-Refresh-Token", refreshToken.AccessToken, new CookieOptions() { HttpOnly = true, SameSite = SameSiteMode.None,Expires= refreshToken.Expiration,Secure=true });
             return Ok(auth );
         }
-/// <summary>
-/// Get Refresh Token
-/// </summary>
-/// <returns></returns>
+        /// <summary>
+        /// Get Refresh Token
+        /// </summary>
+        /// <returns></returns>
         [Route("refreshtoken")]
         [HttpGet]
         public IActionResult RefreshToken()

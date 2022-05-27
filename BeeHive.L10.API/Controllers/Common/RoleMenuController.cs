@@ -3,6 +3,7 @@ using BeeHive.L20.Services.SL20.Model;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BeeHive.L10.API.Controllers
 {
@@ -120,6 +121,21 @@ namespace BeeHive.L10.API.Controllers
                 return StatusCode(500,ex.Message);
             }
           
+        }
+
+        [HttpGet("GetByRoleId")]
+        public ActionResult<IEnumerable<long>> GetByUserId(int roleId)
+        {
+            try
+            {
+                List<RoleMenuModel> record = _roleMenu.GetByRoleId(roleId);
+                List<int> selectedIDs = record.Select(x => x.MenuId).ToList();
+                return Ok(selectedIDs);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }

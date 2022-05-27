@@ -1,18 +1,21 @@
 ﻿using BeeHive.L30.Domain.SL20.Entities.Generic;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
 namespace BeeHive.L30.Domain.SL20.Entities.Common
 {
-    [Table("beehive_role_menu")]
-    public class RoleMenu: CommonAttribute
+    [Table("beehive_user_role")]
+    public class UserRoles: CommonAttribute
     {
         [Key]
         [Column("id")]
-        public int Id { get; set; }
+        public long Id { get; set; }
+        [Column("hopper_id")]
+        public long UserId { get; set; }
         [Column("role_id")]
         public long RoleId { get; set; }
-        [Column("menu_id")]
-        public long MenuId { get; set; }
     }
 }

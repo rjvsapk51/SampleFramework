@@ -10,16 +10,16 @@ using System.Linq;
 
 namespace BeeHive.L30.Domain.SL11.Repository.Common
 {
-    public class RoleMenuRepository : RepositoryBase<RoleMenu>,IRoleMenuRepository
+    public class UserRolesRepository : RepositoryBase<UserRoles>, IUserRolesRepository
     {
-        public List<RoleMenu> GetByRoleId(long roleId)
+       public List<UserRoles> GetByUserId(long userId)
         {
             NpgsqlConnection conn = new NpgsqlConnection(connectionString);
             conn.Open();
             try
             {
-                string query = @$"SELECT id Id, role_id RoleId, menu_id MenuId FROM public.beehive_role_menu where role_id = {roleId}";
-                List<RoleMenu> menuLookup = conn.Query<RoleMenu>(query).ToList();
+                string query = @$"SELECT id Id, hopper_id UserId, role_id RoleID  FROM public.beehive_user_role where hopper_id={userId}";
+                List<UserRoles> menuLookup = conn.Query<UserRoles>(query).ToList();
                 conn.Close();
                 conn.Dispose();
                 return menuLookup;

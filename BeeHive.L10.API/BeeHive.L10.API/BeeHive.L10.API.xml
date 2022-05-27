@@ -252,6 +252,58 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:BeeHive.L10.API.Controllers.Common.UserRolesController">
+            <summary>
+            Configure User - Roles Map
+            </summary>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.Common.UserRolesController.#ctor(BeeHive.L20.Services.SL10.IServices.Common.IUserRolesServices)">
+            <summary>
+            
+            </summary>
+            <param name="userRoles"></param>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.Common.UserRolesController.Get">
+            <summary>
+            Get All
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.Common.UserRolesController.GetById(System.Int32)">
+            <summary>
+            Get By Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.Common.UserRolesController.Create(BeeHive.L20.Services.SL20.Model.Common.UserRolesModel)">
+            <summary>
+            Create User Roles Map
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.Common.UserRolesController.Update(BeeHive.L20.Services.SL20.Model.Common.UserRolesModel)">
+            <summary>
+            Update User Roles Map
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.Common.UserRolesController.Delete(System.Int32)">
+            <summary>
+            Delete User Roles map
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeHive.L10.API.Controllers.Common.UserRolesController.GetByUserId(System.Int64)">
+            <summary>
+            Get All roles of user by user id
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
         <member name="T:BeeHive.L10.API.Controllers.EmployeeController">
             <summary>
             Employee controller

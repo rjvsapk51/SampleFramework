@@ -12,5 +12,6 @@ namespace BeeHive.L20.Services.SL10.IServices
         RoleMenuModel Create(RoleMenuModel model);
         RoleMenuModel Update(RoleMenuModel model);
         void Delete(int id);
+        List<RoleMenuModel> GetByRoleId(long roleId);
     }
 }

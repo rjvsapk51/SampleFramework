@@ -39,5 +39,10 @@ namespace BeeHive.L20.Services.SL11.Services
         {
             _roleMenuRepository.Delete(id);
         }
+        public List<RoleMenuModel> GetByRoleId(long roleId)
+        {
+            List<RoleMenu> entities = _roleMenuRepository.GetByRoleId(roleId);
+            return _mapper.Map<List<RoleMenuModel>>(entities);
+        }
     }
 }

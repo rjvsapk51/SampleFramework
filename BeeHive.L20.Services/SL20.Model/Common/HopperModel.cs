@@ -11,9 +11,6 @@ namespace BeeHive.L20.Services.SL20.Model.Common
         public bool IsSuperHopper { get; set; }
         public bool IsBlocked { get; set; }
         public DateTime LastHopped { get; set; }
-        public DateTime CreatedOn { get; set; }
-        public long CreatedBy { get; set; }
-        public DateTime UpdatedOn { get; set; }
-        public long UpdatedBy { get; set; }
+        public long[] RoleIds { get; set; }
     }
 }

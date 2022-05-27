@@ -33,7 +33,8 @@ namespace BeeHive.L10.API.Loaders
             services.AddSingleton<IUserServices, UserServices>();
             services.AddSingleton<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddSingleton<IRefreshTokenService, RefreshTokenService>();
-
+            services.AddSingleton<IUserRolesRepository, UserRolesRepository>();
+            services.AddSingleton<IUserRolesServices, UserRolesServices>();
         }
     }
 }

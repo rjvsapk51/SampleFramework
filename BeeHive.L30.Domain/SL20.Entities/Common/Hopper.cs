@@ -22,6 +22,7 @@ namespace BeeHive.L30.Domain.SL20.Entities.Common
         [Column("is_blocked")]
         public bool IsBlocked { get; set; }
         [Column("last_hopped")]
-        public DateTime LastHopped { get; set; }     
+        public DateTime LastHopped { get; set; }
+
     }
 }

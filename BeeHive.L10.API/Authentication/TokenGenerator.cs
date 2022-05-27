@@ -41,7 +41,7 @@ namespace BeeHive.L10.API.Authentication
             JwtSecurityToken token = new JwtSecurityToken(
                 issuer: "http://oec.com",
                 audience: "http://oec.com",
-                expires: DateTime.UtcNow.AddSeconds(3000),
+                expires: DateTime.UtcNow.AddMinutes(30),
                 claims: claims,
                 signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
                 );
@@ -63,7 +63,7 @@ namespace BeeHive.L10.API.Authentication
             JwtSecurityToken token = new JwtSecurityToken(
                 issuer: "http://oec.com",
                 audience: "http://oec.com",
-                expires: DateTime.UtcNow.AddSeconds(4000),
+                expires: DateTime.UtcNow.AddMinutes(60),
                 signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256)
                 );
             RefreshToken refreshToken = new RefreshToken
